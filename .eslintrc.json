@@ -51,17 +51,16 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": [
-          "**/*.test.ts",
-          "**/*.test.tsx"
-        ]
+        "devDependencies": ["**/*.test.ts", "**/*.test.tsx"]
       }
     ],
     "jsx-a11y/anchor-is-valid": "off",
     "react/no-danger": "off",
     "semi": "off",
     "arrow-body-style": "off",
+    "no-param-reassign": "off",
     "@typescript-eslint/semi": "off",
-    "@typescript-eslint/comma-dangle": "off"
+    "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
