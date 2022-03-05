@@ -1,8 +1,29 @@
-import '../styles/globals.css';
 import type { AppProps } from 'next/app';
+import AppProviders from 'AppProviders';
+import '../styles/globals.css';
+
+const isServer = typeof window === 'undefined';
+
+if (process.env.NODE_ENV === 'development') {
+  if (isServer) {
+    (async () => {
+      const server = await import('../mocks/server');
+      server.default.listen();
+    })();
+  } else {
+    (async () => {
+      const worker = await import('../mocks/browser');
+      worker.default.start();
+    })();
+  }
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <AppProviders>
+      <Component {...pageProps} />
+    </AppProviders>
+  );
 }
 
 export default MyApp;
