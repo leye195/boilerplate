@@ -1,3 +1,7 @@
+export const classnames = (...classnameList: string[]) => {
+  return classnameList.join(' ');
+};
+
 export const sessionStore = () => {
   const session = window.sessionStorage;
 
