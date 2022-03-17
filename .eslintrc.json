@@ -7,7 +7,7 @@
     "testing-library",
     "@next/eslint-plugin-next"
   ],
-  "ignorePatterns": ["next.*", "jest.*.*", "*.config.js"],
+  "ignorePatterns": ["next.*", "jest.*.*"],
   "extends": [
     "eslint:recommended",
     "next/core-web-vitals",
@@ -22,6 +22,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
+    "ecmaVersion": 12,
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
@@ -56,7 +57,6 @@
     ],
     "func-names": ["error", "as-needed"],
     "no-unused-vars": "warn",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {
@@ -68,6 +68,8 @@
     "semi": "off",
     "arrow-body-style": "off",
     "no-param-reassign": "off",
+    "object-curly-newline": "warn",
+    "object-curly-spacing": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/comma-dangle": "off",
@@ -75,6 +77,7 @@
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",
-    "@typescript-eslint/no-unsafe-call": "off"
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }

@@ -1,10 +1,7 @@
-import axios, {
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-} from 'axios';
+import axios, { AxiosRequestConfig, AxiosRequestHeaders } from 'axios';
 import { sessionStore } from 'libs/utils';
 
-const BASE_URL = '';
+const BASE_URL = process.env.API_URL;
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -22,8 +19,15 @@ api.interceptors.request.use((config: AxiosRequestConfig) => {
   return config;
 });
 
-api.interceptors.response.use((response) => {
-  return response;
-});
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    const newError = new Error();
+    newError.message = error.message;
+    throw newError;
+  },
+);
 
 export default api;
