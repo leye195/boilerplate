@@ -1,14 +1,22 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "react"],
-  "ignorePatterns": ["next.*", "jest.*.*"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "testing-library",
+    "@next/eslint-plugin-next"
+  ],
+  "ignorePatterns": ["next.*", "jest.*.*", "*.config.js"],
   "extends": [
+    "eslint:recommended",
     "next/core-web-vitals",
     "prettier",
+    "plugin:@next/next/recommended",
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "airbnb",
-    "airbnb-typescript",
-    "airbnb/hooks"
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -20,15 +28,19 @@
   "env": {
     "node": true,
     "browser": true,
+    "es6": true,
     "jest": true
   },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "rules": {
+    "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
     "react/button-has-type": "off",
-    "react/jsx-filename-extension": [
-      1,
-      { "extensions": [".tsx"] }
-    ],
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
     "react/no-array-index-key": "off",
@@ -38,10 +50,7 @@
     "react/function-component-definition": [
       1,
       {
-        "namedComponents": [
-          "arrow-function",
-          "function-declaration"
-        ],
+        "namedComponents": ["arrow-function", "function-declaration"],
         "unnamedComponents": "arrow-function"
       }
     ],
@@ -59,8 +68,13 @@
     "semi": "off",
     "arrow-body-style": "off",
     "no-param-reassign": "off",
+    "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/comma-dangle": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-call": "off"
   }
 }
