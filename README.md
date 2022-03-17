@@ -4,6 +4,10 @@ NextJS 프로젝트 빠르게 진행하기 위한 boilerplate
 
 ## Get Started
 
+```
+git clone -b main --single-branch https://github.com/leye195/boilerplate.git
+```
+
 ### install packages
 
 ```

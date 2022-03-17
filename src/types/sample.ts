@@ -1,3 +1,3 @@
 export type SampleResponse = {
-  data: { [key: string]: string }[];
+  data: { [key: string]: string };
 };

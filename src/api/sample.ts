@@ -1,7 +1,7 @@
 import api from 'api';
 
-export const getTodos = async () => {
-  const response = await api.get('todos');
+export const getTodo = async () => {
+  const response = await api.get('todos/1');
   const data = {
     data: response.data,
     status: response.status,
