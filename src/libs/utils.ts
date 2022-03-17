@@ -5,7 +5,7 @@ export const classnames = (...classnameList: string[]) => {
 export const sessionStore = () => {
   const session = window.sessionStorage;
 
-  const getItem = (key: string) => {
+  const getItem = (key: string): any => {
     try {
       const value = JSON.parse(session.getItem(key) as string);
       return value ?? null;
@@ -14,7 +14,7 @@ export const sessionStore = () => {
     }
   };
 
-  const setItem = (key: string, value: any) => {
+  const setItem = (key: string, value: string) => {
     session.setItem(key, value);
   };
 
@@ -32,7 +32,7 @@ export const sessionStore = () => {
 export const localStore = () => {
   const local = window.localStorage;
 
-  const getItem = (key: string) => {
+  const getItem = (key: string): any => {
     try {
       const value = JSON.parse(local.getItem(key) as string);
       return value ?? null;
@@ -41,7 +41,7 @@ export const localStore = () => {
     }
   };
 
-  const setItem = (key: string, value: any) => {
+  const setItem = (key: string, value: string) => {
     local.setItem(key, value);
   };
 
