@@ -1,5 +1,7 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { ReactElement } from 'react';
+
 import { useRecoilState } from 'recoil';
 import { dehydrate, QueryClient, useQuery, UseQueryResult } from 'react-query';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -9,19 +11,20 @@ import Input from 'components/common/Input';
 import { getTodo } from 'api/sample';
 import { SampleResponse } from 'types/sample';
 import TextArea from 'components/common/TextArea';
+import Layout from 'components/layout';
 
 type FormValues = {
   name: string;
   textarea: string;
 };
 
-const Home: NextPage = () => {
+const Home = () => {
   const { data: todo }: UseQueryResult<SampleResponse> = useQuery(
     'todos',
     getTodo,
   );
   const [counter, setCounter] = useRecoilState(counterState);
-  const { register, handleSubmit, watch } = useForm<FormValues>({
+  const { register, handleSubmit } = useForm<FormValues>({
     mode: 'onChange',
   });
 
@@ -32,8 +35,6 @@ const Home: NextPage = () => {
   const onValid: SubmitHandler<FormValues> = (data) => {
     console.log(data);
   };
-
-  console.log(watch());
 
   return (
     <div>
@@ -74,6 +75,10 @@ const Home: NextPage = () => {
       </main>
     </div>
   );
+};
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {

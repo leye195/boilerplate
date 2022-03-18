@@ -1,7 +1,17 @@
+import type { NextPage } from 'next';
 import type { AppProps } from 'next/app';
+import { ReactElement } from 'react';
+import { Hydrate } from 'react-query';
 import AppProviders from 'AppProviders';
 import '../styles/globals.css';
-import { Hydrate } from 'react-query';
+
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactElement;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
 const isServer = typeof window === 'undefined';
 
@@ -19,11 +29,13 @@ if (process.env.NODE_ENV === 'development') {
   }
 }
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
     <AppProviders>
       <Hydrate state={pageProps.dehydratedState}>
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
       </Hydrate>
     </AppProviders>
   );

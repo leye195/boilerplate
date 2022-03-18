@@ -3,9 +3,7 @@ type Props = {
 };
 
 const Header = ({ className = '' }: Props) => {
-  return (
-    <header className={className}>Header</header>
-  );
+  return <header className={className}></header>;
 };
 
 export default Header;
